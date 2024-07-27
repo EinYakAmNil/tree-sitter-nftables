@@ -35,7 +35,9 @@ module.exports = grammar({
 			"=",
 			choice(
 				$.string,
-				$.ip_address
+				$.ip_address,
+				$.set,
+				$.value
 			)
 		),
 
@@ -128,10 +130,7 @@ module.exports = grammar({
 
 		packet_criteria: $ => seq(
 			repeat1($._match),
-			choice(
-				$.variable,
-				$.value
-			)
+			$._criteria_value
 		),
 
 		rule_action: $ => choice(
@@ -139,22 +138,44 @@ module.exports = grammar({
 			'drop',
 			'reject',
 			'jump',
-			'goto'
+			'goto',
+			'return',
+			'masquerade',
+			'snat',
+			'dnat'
 		),
 
 		_match: $ => choice(
+			'type',
 			'iif',
 			'oif',
+			'iifname',
+			'oifname',
+			'meta',
 			'inet',
 			'ip',
 			'ip6',
 			'ether',
+			'arp',
 			'saddr',
-			'daddr'
+			'daddr',
+			'protocol',
+			'tcp',
+			'udp',
+			'icmp',
+			'icmp6',
+			'esp',
 		),
 
 		value: $ => choice(
 			'exists'
+		),
+
+		set: $ => seq(
+			'{',
+			repeat(seq($._criteria_value, ',')),
+			$._criteria_value,
+			'}'
 		),
 
 		identifier: $ => /[a-zA-Z]+/,
@@ -163,5 +184,11 @@ module.exports = grammar({
 		string: $ => /".*"/,
 		number: $ => /-?[0-9]+/,
 		ip_address: $ => /(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)(\/(?:3[0-2]|2[0-9]|1[0-9]|[0-9]))?/,
+		_criteria_value: $ => choice(
+			$.ip_address,
+			$.string,
+			$.value,
+			$.variable
+		)
 	}
 })

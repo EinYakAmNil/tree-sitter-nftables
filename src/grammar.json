@@ -108,6 +108,10 @@
             {
               "type": "SYMBOL",
               "name": "ip_address"
+            },
+            {
+              "type": "SYMBOL",
+              "name": "set"
             }
           ]
         }
@@ -402,17 +406,8 @@
           }
         },
         {
-          "type": "CHOICE",
-          "members": [
-            {
-              "type": "SYMBOL",
-              "name": "variable"
-            },
-            {
-              "type": "SYMBOL",
-              "name": "value"
-            }
-          ]
+          "type": "SYMBOL",
+          "name": "_criteria_value"
         }
       ]
     },
@@ -438,6 +433,22 @@
         {
           "type": "STRING",
           "value": "goto"
+        },
+        {
+          "type": "STRING",
+          "value": "return"
+        },
+        {
+          "type": "STRING",
+          "value": "masquerade"
+        },
+        {
+          "type": "STRING",
+          "value": "snat"
+        },
+        {
+          "type": "STRING",
+          "value": "dnat"
         }
       ]
     },
@@ -446,11 +457,27 @@
       "members": [
         {
           "type": "STRING",
+          "value": "type"
+        },
+        {
+          "type": "STRING",
           "value": "iif"
         },
         {
           "type": "STRING",
           "value": "oif"
+        },
+        {
+          "type": "STRING",
+          "value": "iifname"
+        },
+        {
+          "type": "STRING",
+          "value": "oifname"
+        },
+        {
+          "type": "STRING",
+          "value": "meta"
         },
         {
           "type": "STRING",
@@ -466,11 +493,43 @@
         },
         {
           "type": "STRING",
+          "value": "ether"
+        },
+        {
+          "type": "STRING",
+          "value": "arp"
+        },
+        {
+          "type": "STRING",
           "value": "saddr"
         },
         {
           "type": "STRING",
           "value": "daddr"
+        },
+        {
+          "type": "STRING",
+          "value": "protocol"
+        },
+        {
+          "type": "STRING",
+          "value": "tcp"
+        },
+        {
+          "type": "STRING",
+          "value": "udp"
+        },
+        {
+          "type": "STRING",
+          "value": "icmp"
+        },
+        {
+          "type": "STRING",
+          "value": "icmp6"
+        },
+        {
+          "type": "STRING",
+          "value": "esp"
         }
       ]
     },
@@ -480,6 +539,39 @@
         {
           "type": "STRING",
           "value": "exists"
+        }
+      ]
+    },
+    "set": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "{"
+        },
+        {
+          "type": "REPEAT",
+          "content": {
+            "type": "SEQ",
+            "members": [
+              {
+                "type": "SYMBOL",
+                "name": "_criteria_value"
+              },
+              {
+                "type": "STRING",
+                "value": ","
+              }
+            ]
+          }
+        },
+        {
+          "type": "SYMBOL",
+          "name": "_criteria_value"
+        },
+        {
+          "type": "STRING",
+          "value": "}"
         }
       ]
     },
@@ -515,6 +607,23 @@
     "ip_address": {
       "type": "PATTERN",
       "value": "(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)(\\/(?:3[0-2]|2[0-9]|1[0-9]|[0-9]))?"
+    },
+    "_criteria_value": {
+      "type": "CHOICE",
+      "members": [
+        {
+          "type": "SYMBOL",
+          "name": "ip_address"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "value"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "variable"
+        }
+      ]
     }
   },
   "extras": [

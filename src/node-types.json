@@ -226,6 +226,10 @@
       "required": true,
       "types": [
         {
+          "type": "ip_address",
+          "named": true
+        },
+        {
           "type": "value",
           "named": true
         },
@@ -255,6 +259,29 @@
         },
         {
           "type": "rule_action",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "set",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "ip_address",
+          "named": true
+        },
+        {
+          "type": "value",
+          "named": true
+        },
+        {
+          "type": "variable",
           "named": true
         }
       ]
@@ -315,6 +342,10 @@
           "named": true
         },
         {
+          "type": "set",
+          "named": true
+        },
+        {
           "type": "string",
           "named": true
         }
@@ -323,6 +354,10 @@
   },
   {
     "type": "$",
+    "named": false
+  },
+  {
+    "type": ",",
     "named": false
   },
   {
@@ -362,6 +397,10 @@
     "named": false
   },
   {
+    "type": "dnat",
+    "named": false
+  },
+  {
     "type": "drop",
     "named": false
   },
@@ -371,6 +410,14 @@
   },
   {
     "type": "egress",
+    "named": false
+  },
+  {
+    "type": "esp",
+    "named": false
+  },
+  {
+    "type": "ether",
     "named": false
   },
   {
@@ -398,7 +445,19 @@
     "named": false
   },
   {
+    "type": "icmp",
+    "named": false
+  },
+  {
+    "type": "icmp6",
+    "named": false
+  },
+  {
     "type": "iif",
+    "named": false
+  },
+  {
+    "type": "iifname",
     "named": false
   },
   {
@@ -430,6 +489,14 @@
     "named": false
   },
   {
+    "type": "masquerade",
+    "named": false
+  },
+  {
+    "type": "meta",
+    "named": false
+  },
+  {
     "type": "nat",
     "named": false
   },
@@ -443,6 +510,10 @@
   },
   {
     "type": "oif",
+    "named": false
+  },
+  {
+    "type": "oifname",
     "named": false
   },
   {
@@ -466,11 +537,19 @@
     "named": false
   },
   {
+    "type": "protocol",
+    "named": false
+  },
+  {
     "type": "raw",
     "named": false
   },
   {
     "type": "reject",
+    "named": false
+  },
+  {
+    "type": "return",
     "named": false
   },
   {
@@ -486,6 +565,10 @@
     "named": false
   },
   {
+    "type": "snat",
+    "named": false
+  },
+  {
     "type": "srcnat",
     "named": false
   },
@@ -498,7 +581,15 @@
     "named": false
   },
   {
+    "type": "tcp",
+    "named": false
+  },
+  {
     "type": "type",
+    "named": false
+  },
+  {
+    "type": "udp",
     "named": false
   },
   {
