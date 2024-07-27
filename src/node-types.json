@@ -1,0 +1,512 @@
+[
+  {
+    "type": "block",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": false,
+      "types": [
+        {
+          "type": "chain_declaration",
+          "named": true
+        },
+        {
+          "type": "chain_definition",
+          "named": true
+        },
+        {
+          "type": "comment",
+          "named": true
+        },
+        {
+          "type": "flush_command",
+          "named": true
+        },
+        {
+          "type": "rule_definition",
+          "named": true
+        },
+        {
+          "type": "table_declaration",
+          "named": true
+        },
+        {
+          "type": "variable_definition",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "chain_declaration",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "block",
+          "named": true
+        },
+        {
+          "type": "identifier",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "chain_definition",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "chain_hook",
+          "named": true
+        },
+        {
+          "type": "chain_policy",
+          "named": true
+        },
+        {
+          "type": "chain_priority",
+          "named": true
+        },
+        {
+          "type": "chain_type",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "chain_hook",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "chain_hook_value",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "chain_hook_value",
+    "named": true,
+    "fields": {}
+  },
+  {
+    "type": "chain_policy",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "default_policy",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "chain_priority",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "chain_priority_value",
+          "named": true
+        },
+        {
+          "type": "number",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "chain_priority_value",
+    "named": true,
+    "fields": {}
+  },
+  {
+    "type": "chain_type",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "chain_type_value",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "chain_type_value",
+    "named": true,
+    "fields": {}
+  },
+  {
+    "type": "config_file",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": false,
+      "types": [
+        {
+          "type": "chain_declaration",
+          "named": true
+        },
+        {
+          "type": "chain_definition",
+          "named": true
+        },
+        {
+          "type": "comment",
+          "named": true
+        },
+        {
+          "type": "flush_command",
+          "named": true
+        },
+        {
+          "type": "rule_definition",
+          "named": true
+        },
+        {
+          "type": "table_declaration",
+          "named": true
+        },
+        {
+          "type": "variable_definition",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "default_policy",
+    "named": true,
+    "fields": {}
+  },
+  {
+    "type": "flush_command",
+    "named": true,
+    "fields": {}
+  },
+  {
+    "type": "identifier",
+    "named": true,
+    "fields": {}
+  },
+  {
+    "type": "packet_criteria",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "value",
+          "named": true
+        },
+        {
+          "type": "variable",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "rule_action",
+    "named": true,
+    "fields": {}
+  },
+  {
+    "type": "rule_definition",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "packet_criteria",
+          "named": true
+        },
+        {
+          "type": "rule_action",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "table_declaration",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "block",
+          "named": true
+        },
+        {
+          "type": "identifier",
+          "named": true
+        },
+        {
+          "type": "table_family",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "table_family",
+    "named": true,
+    "fields": {}
+  },
+  {
+    "type": "value",
+    "named": true,
+    "fields": {}
+  },
+  {
+    "type": "variable",
+    "named": true,
+    "fields": {}
+  },
+  {
+    "type": "variable_definition",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "identifier",
+          "named": true
+        },
+        {
+          "type": "ip_address",
+          "named": true
+        },
+        {
+          "type": "string",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "$",
+    "named": false
+  },
+  {
+    "type": ";",
+    "named": false
+  },
+  {
+    "type": "=",
+    "named": false
+  },
+  {
+    "type": "accept",
+    "named": false
+  },
+  {
+    "type": "arp",
+    "named": false
+  },
+  {
+    "type": "bridge",
+    "named": false
+  },
+  {
+    "type": "chain",
+    "named": false
+  },
+  {
+    "type": "comment",
+    "named": true
+  },
+  {
+    "type": "daddr",
+    "named": false
+  },
+  {
+    "type": "define",
+    "named": false
+  },
+  {
+    "type": "drop",
+    "named": false
+  },
+  {
+    "type": "dstnat",
+    "named": false
+  },
+  {
+    "type": "egress",
+    "named": false
+  },
+  {
+    "type": "exists",
+    "named": false
+  },
+  {
+    "type": "filter",
+    "named": false
+  },
+  {
+    "type": "flush",
+    "named": false
+  },
+  {
+    "type": "forward",
+    "named": false
+  },
+  {
+    "type": "goto",
+    "named": false
+  },
+  {
+    "type": "hook",
+    "named": false
+  },
+  {
+    "type": "iif",
+    "named": false
+  },
+  {
+    "type": "inet",
+    "named": false
+  },
+  {
+    "type": "ingress",
+    "named": false
+  },
+  {
+    "type": "input",
+    "named": false
+  },
+  {
+    "type": "ip",
+    "named": false
+  },
+  {
+    "type": "ip6",
+    "named": false
+  },
+  {
+    "type": "ip_address",
+    "named": true
+  },
+  {
+    "type": "jump",
+    "named": false
+  },
+  {
+    "type": "nat",
+    "named": false
+  },
+  {
+    "type": "netdev",
+    "named": false
+  },
+  {
+    "type": "number",
+    "named": true
+  },
+  {
+    "type": "oif",
+    "named": false
+  },
+  {
+    "type": "output",
+    "named": false
+  },
+  {
+    "type": "policy",
+    "named": false
+  },
+  {
+    "type": "postrouting",
+    "named": false
+  },
+  {
+    "type": "prerouting",
+    "named": false
+  },
+  {
+    "type": "priority",
+    "named": false
+  },
+  {
+    "type": "raw",
+    "named": false
+  },
+  {
+    "type": "reject",
+    "named": false
+  },
+  {
+    "type": "route",
+    "named": false
+  },
+  {
+    "type": "ruleset",
+    "named": false
+  },
+  {
+    "type": "saddr",
+    "named": false
+  },
+  {
+    "type": "srcnat",
+    "named": false
+  },
+  {
+    "type": "string",
+    "named": true
+  },
+  {
+    "type": "table",
+    "named": false
+  },
+  {
+    "type": "type",
+    "named": false
+  },
+  {
+    "type": "{",
+    "named": false
+  },
+  {
+    "type": "}",
+    "named": false
+  }
+]

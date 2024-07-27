@@ -1,0 +1,531 @@
+{
+  "name": "nftables",
+  "rules": {
+    "config_file": {
+      "type": "REPEAT",
+      "content": {
+        "type": "SYMBOL",
+        "name": "_statement"
+      }
+    },
+    "_statement": {
+      "type": "CHOICE",
+      "members": [
+        {
+          "type": "SYMBOL",
+          "name": "comment"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "flush_command"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "variable_definition"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "table_declaration"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "chain_declaration"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "chain_definition"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "rule_definition"
+        }
+      ]
+    },
+    "block": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "{"
+        },
+        {
+          "type": "REPEAT",
+          "content": {
+            "type": "SYMBOL",
+            "name": "_statement"
+          }
+        },
+        {
+          "type": "STRING",
+          "value": "}"
+        }
+      ]
+    },
+    "comment": {
+      "type": "PATTERN",
+      "value": "#.*"
+    },
+    "flush_command": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "flush"
+        },
+        {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "STRING",
+              "value": "ruleset"
+            }
+          ]
+        }
+      ]
+    },
+    "variable_definition": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "define"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "identifier"
+        },
+        {
+          "type": "STRING",
+          "value": "="
+        },
+        {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "SYMBOL",
+              "name": "string"
+            },
+            {
+              "type": "SYMBOL",
+              "name": "ip_address"
+            }
+          ]
+        }
+      ]
+    },
+    "table_declaration": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "table"
+        },
+        {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "SYMBOL",
+              "name": "table_family"
+            },
+            {
+              "type": "BLANK"
+            }
+          ]
+        },
+        {
+          "type": "SYMBOL",
+          "name": "identifier"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "block"
+        }
+      ]
+    },
+    "table_family": {
+      "type": "CHOICE",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "arp"
+        },
+        {
+          "type": "STRING",
+          "value": "bridge"
+        },
+        {
+          "type": "STRING",
+          "value": "inet"
+        },
+        {
+          "type": "STRING",
+          "value": "ip"
+        },
+        {
+          "type": "STRING",
+          "value": "ip6"
+        },
+        {
+          "type": "STRING",
+          "value": "netdev"
+        }
+      ]
+    },
+    "chain_declaration": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "chain"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "identifier"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "block"
+        }
+      ]
+    },
+    "chain_definition": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "SYMBOL",
+          "name": "chain_type"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "chain_hook"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "chain_priority"
+        },
+        {
+          "type": "STRING",
+          "value": ";"
+        },
+        {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "SEQ",
+              "members": [
+                {
+                  "type": "SYMBOL",
+                  "name": "chain_policy"
+                },
+                {
+                  "type": "STRING",
+                  "value": ";"
+                }
+              ]
+            },
+            {
+              "type": "BLANK"
+            }
+          ]
+        }
+      ]
+    },
+    "chain_type": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "type"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "chain_type_value"
+        }
+      ]
+    },
+    "chain_type_value": {
+      "type": "CHOICE",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "filter"
+        },
+        {
+          "type": "STRING",
+          "value": "nat"
+        },
+        {
+          "type": "STRING",
+          "value": "route"
+        }
+      ]
+    },
+    "chain_hook": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "hook"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "chain_hook_value"
+        }
+      ]
+    },
+    "chain_hook_value": {
+      "type": "CHOICE",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "ingress"
+        },
+        {
+          "type": "STRING",
+          "value": "prerouting"
+        },
+        {
+          "type": "STRING",
+          "value": "input"
+        },
+        {
+          "type": "STRING",
+          "value": "forward"
+        },
+        {
+          "type": "STRING",
+          "value": "output"
+        },
+        {
+          "type": "STRING",
+          "value": "postrouting"
+        },
+        {
+          "type": "STRING",
+          "value": "egress"
+        }
+      ]
+    },
+    "chain_priority": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "priority"
+        },
+        {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "SYMBOL",
+              "name": "chain_priority_value"
+            },
+            {
+              "type": "SYMBOL",
+              "name": "number"
+            }
+          ]
+        }
+      ]
+    },
+    "chain_priority_value": {
+      "type": "CHOICE",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "raw"
+        },
+        {
+          "type": "STRING",
+          "value": "srcnat"
+        },
+        {
+          "type": "STRING",
+          "value": "filter"
+        },
+        {
+          "type": "STRING",
+          "value": "dstnat"
+        }
+      ]
+    },
+    "chain_policy": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "policy"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "default_policy"
+        }
+      ]
+    },
+    "default_policy": {
+      "type": "CHOICE",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "accept"
+        },
+        {
+          "type": "STRING",
+          "value": "drop"
+        }
+      ]
+    },
+    "rule_definition": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "REPEAT",
+          "content": {
+            "type": "SYMBOL",
+            "name": "packet_criteria"
+          }
+        },
+        {
+          "type": "SYMBOL",
+          "name": "rule_action"
+        }
+      ]
+    },
+    "packet_criteria": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "REPEAT1",
+          "content": {
+            "type": "SYMBOL",
+            "name": "_match"
+          }
+        },
+        {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "SYMBOL",
+              "name": "variable"
+            },
+            {
+              "type": "SYMBOL",
+              "name": "value"
+            }
+          ]
+        }
+      ]
+    },
+    "rule_action": {
+      "type": "CHOICE",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "accept"
+        },
+        {
+          "type": "STRING",
+          "value": "drop"
+        },
+        {
+          "type": "STRING",
+          "value": "reject"
+        },
+        {
+          "type": "STRING",
+          "value": "jump"
+        },
+        {
+          "type": "STRING",
+          "value": "goto"
+        }
+      ]
+    },
+    "_match": {
+      "type": "CHOICE",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "iif"
+        },
+        {
+          "type": "STRING",
+          "value": "oif"
+        },
+        {
+          "type": "STRING",
+          "value": "inet"
+        },
+        {
+          "type": "STRING",
+          "value": "ip"
+        },
+        {
+          "type": "STRING",
+          "value": "ip6"
+        },
+        {
+          "type": "STRING",
+          "value": "saddr"
+        },
+        {
+          "type": "STRING",
+          "value": "daddr"
+        }
+      ]
+    },
+    "value": {
+      "type": "CHOICE",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "exists"
+        }
+      ]
+    },
+    "identifier": {
+      "type": "PATTERN",
+      "value": "[a-zA-Z]+"
+    },
+    "variable": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "$"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "_varname"
+        }
+      ]
+    },
+    "_varname": {
+      "type": "PATTERN",
+      "value": "[a-zA-Z]+"
+    },
+    "string": {
+      "type": "PATTERN",
+      "value": "\".*\""
+    },
+    "number": {
+      "type": "PATTERN",
+      "value": "-?[0-9]+"
+    },
+    "ip_address": {
+      "type": "PATTERN",
+      "value": "(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)(\\/(?:3[0-2]|2[0-9]|1[0-9]|[0-9]))?"
+    }
+  },
+  "extras": [
+    {
+      "type": "PATTERN",
+      "value": "\\s"
+    }
+  ],
+  "conflicts": [],
+  "precedences": [],
+  "externals": [],
+  "inline": [],
+  "supertypes": []
+}
