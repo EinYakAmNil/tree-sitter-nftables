@@ -1,0 +1,42 @@
+=============================
+Variable definition and usage
+=============================
+
+define wandev = "enp0s3"
+define lan = 192.168.178.0/24
+
+table inet filter {
+	chain forward {
+		type filter hook forward priority 0; policy drop;
+		iif $wandev ip daddr $lan accept
+	}
+}
+
+-----------------------------
+
+(config_file
+	(variable_definition
+		(identifier)
+		(string))
+	(variable_definition
+		(identifier)
+		(ip_address))
+	(table_declaration
+		(table_family)
+		(identifier)
+		(block
+			(chain_declaration
+				(identifier)
+				(block
+					(chain_definition
+						(chain_type (chain_type_value))
+						(chain_hook (chain_hook_value))
+						(chain_priority (number))
+						(chain_policy (default_policy)))
+					(rule_definition
+						(packet_criteria
+							(variable))
+						(packet_criteria
+							(variable))
+						(rule_action))))))
+)

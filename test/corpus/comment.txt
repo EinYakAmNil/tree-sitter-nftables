@@ -1,0 +1,16 @@
+=================
+Comment detection
+=================
+
+#!/usr/sbin/nft -f
+flush ruleset # Reset configuration
+# This is also a comment
+
+-----------------
+
+(config_file
+	(comment)
+	(flush_command)
+	(comment)
+	(comment)
+)
